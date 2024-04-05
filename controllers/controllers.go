@@ -12,7 +12,6 @@ import (
 
 func HashPassword(password string) string {
 
-
 }
 
 func VerifyPassword(password string, hash string) bool {
@@ -130,13 +129,12 @@ func SignIn() gin.HandlerFunc {
 		dbUser.Token = token
 		dbUser.Refresh_Token = refreshToken
 
-
 		generate.UpdateAllTokens(token, refreshToken)
 
+		c.JSON(200, gin.H{"message": "User signed in successfully", "user": dbUser, "token": token})
+	}
 
-		c.JSON(200, gin.H{"message": "User signed in successfully", "user": dbUser,"token": token})
 }
-
 func ProductViewerAdmin() gin.HandlerFunc {}
 
 func ProductSearch() gin.HandlerFunc {}
