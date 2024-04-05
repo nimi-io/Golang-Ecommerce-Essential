@@ -11,13 +11,13 @@ import (
 	"github.com/nimi-io/Golang-Ecommerce-Essential/routes"
 )
 
-func main(){
+func main() {
 	port := os.Getenv("PORT")
-	if port == ""{
+	if port == "" {
 		port = "8080"
 	}
 
-	app:= controllers.NewApplication(database.ProductData(database.Client, "Products"), database.UserData(database.Client, "Users"))
+	app := controllers.NewApplication(database.ProductData(database.Client, "Products"), database.UserData(database.Client, "Users"))
 	router := gin.New()
 
 	router.Use(gin.Logger())
